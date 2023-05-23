@@ -2,6 +2,7 @@ class AgendaApp {
     api;
     swticher;
     month = 0;
+
     constructor() {
         this.api = new API();
         this.switcher = new Switcher(this);
@@ -41,8 +42,6 @@ class API {
             this.dataFromAPI = data.months;
         })
         return this.dataFromAPI;
-
-
     }
 }
 
@@ -52,28 +51,22 @@ class Agenda {
     month;
     htmlElement;
     agendaApp;
+
     constructor(data, agendaApp) {
         this.agendaApp = agendaApp;
         this.htmlElement = document.createElement("article");
         this.htmlElement.classList.add("agenda");
         this.data = data;
-        console.log(data);
         this.renderer = new Renderer();
         this.renderer.render("body", this.htmlElement);
         this.header = new Header(this, data.name, this.agendaApp);
         this.month = new Month(this, data.days);
     }
 
-
     render(placeToRender, whatToRender) {
         this.renderer.render(placeToRender, whatToRender);
-
-
     }
 }
-
-
-
 
 class Header {
     nameOfMonth;
@@ -90,12 +83,10 @@ class Header {
         this.htmlElement.classList.add("agenda__header");
         this.text = document.createElement("h2")
         this.agenda.render(".agenda", this.htmlElement);
-        this.leftButton = new Button("precious", "<", "agenda--left", this, this.AgendaApp);
+        this.leftButton = new Button("previous", "<", "agenda--left", this, this.agendaApp);
         this.agenda.render(".agenda__header", this.text);
-        this.rightButton = new Button("next", ">", "agenda--right", this, this.AgendaApp);
+        this.rightButton = new Button("next", ">", "agenda--right", this, this.agendaApp);
         this.text.innerText = this.nameOfMonth;
-        
-
     }
 
     render(placeToRender, whatToRender){
@@ -110,6 +101,7 @@ class Button{
     switcher;
     header;
     type;
+
     constructor(type, innerText, extraClass, header, agendaApp){
         this.type = type;
         this.agendaApp = agendaApp;
@@ -119,7 +111,6 @@ class Button{
         this.htmlElement.classList.add(this.extraClass);
         this.innerText = innerText;
         this.htmlElement.innerText = this.innerText;
-        // this.switcher = new Switcher(this.extraClass);
         this.header = header;
         this.render();
 
@@ -143,8 +134,9 @@ class Switcher{
     agendaApp;
     agenda;
     cleaner;
+
     constructor(agendaApp){
-        this.agendaApp = this.agendaApp;
+        this.agendaApp = agendaApp;
         this.cleaner = new Cleaner();
     }
 
@@ -164,7 +156,6 @@ class Month {
         this.htmlElement = document.createElement("ul");
         this.htmlElement.classList.add("agenda__month");
         this.numberOfDays = numberOfDays;
-        console.log(numberOfDays);
         this.agenda = agenda;
         this.agenda.render(".agenda", this.htmlElement);
         for (let i = 1; i <= numberOfDays; i++) {
