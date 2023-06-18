@@ -1,13 +1,23 @@
-class Decrypter{
+// hier maak ik de class 'Decrypter' aan.
+class Decrypter{    
+    // een functie die 'decrypt' heet en 'stringToDecrypt' binnen krijgt.
     decrypt(stringToDecrypt) {
+        // zet de inhoud van de string 'stringToDecrypt' om naar hoofdletters.
         stringToDecrypt = stringToDecrypt.toUpperCase();
+        // een nieuwe variabele genaamd 'decryptedString' wordt aangemaakt die leeg is.
         let decryptedString = [];
 
+        // een for loop
         for (let i = 0; i < stringToDecrypt.length; i++){
+            // een switch statement die de waarde van 'i' controleert binnen het string 'stringToDecrypt'.
             switch (stringToDecrypt[i]) {
+                // controleert of de waarde het letter binnen de aanhalingstekens is.
                 case "D":
+                    // de letter binnen de aanhalingstekens wordt toegevoegd aan de 'decryptedString'.
                     decryptedString.push("A");
+                    // de uitvoering wordt beëindigd.
                     break;
+                // de 'cases' hieronder is het zelfde als de 'case' hierboven, maar dan alleen een ander letter.
                 case "E":
                     decryptedString.push("B");
                     break;
@@ -83,12 +93,18 @@ class Decrypter{
                 case "C":
                     decryptedString.push("Z");
                     break;
+                // dit 'statement' wordt uitgevoerd wanneer geen enkele 'case' overeenkomt met de waarde van de string.
                 default:
+                    // de waarde van 'i' in de 'stringToDecrypt' die niet overeenkomt met de voorafgaande cases wordt
+                    // toegevoegd aan de 'decryptedString'.
                     decryptedString.push(stringToDecrypt[i]);
+                    // de uitvoering wordt beëindigd.
                     break;
             }
         }
+        // alle elementen van de array wordt samengevoegd tot een enkele string.
         decryptedString = decryptedString.join("");
-        console.log(decryptedString);
+        // de waarde van 'decryptedString' wordt geretourneerd.
+        return decryptedString;
     }
 }

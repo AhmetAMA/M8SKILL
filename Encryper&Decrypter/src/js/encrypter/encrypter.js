@@ -1,13 +1,23 @@
+// hier maak ik de class 'Encrypter' aan.
 class Encrypter{
+    // een functie die 'encrypt' heet en 'stringToEncrypt' binnen krijgt.
     encrypt(stringToEncrypt) {
+        // zet de inhoud van de string 'stringToEncrypt' om naar hoofdletters.
         stringToEncrypt = stringToEncrypt.toUpperCase();
+        // een nieuwe variabele genaamd 'EncryptedString' wordt aangemaakt die leeg is.
         let encryptedString = [];
         
+        // een for loop
         for (let i = 0; i < stringToEncrypt.length; i++){
+            // een switch statement die de waarde van 'i' controleert binnen het string 'stringToEncrypt'.
             switch (stringToEncrypt[i]) {
+                // controleert of de waarde het letter binnen de aanhalingstekens is.
                 case "A":
+                    // de letter binnen de aanhalingstekens wordt toegevoegd aan de 'encryptedString'.
                     encryptedString.push("D");
+                    // de uitvoering wordt beëindigd.
                     break;
+                // de 'cases' hieronder is het zelfde als de 'case' hierboven, maar dan alleen een ander letter.
                 case "B":
                     encryptedString.push("E");
                     break;
@@ -83,12 +93,18 @@ class Encrypter{
                 case "Z":
                     encryptedString.push("C");
                     break;
+                // dit 'statement' wordt uitgevoerd wanneer geen enkele 'case' overeenkomt met de waarde van de string.
                 default:
+                    // de waarde van 'i' in de 'stringToEncrypt' die niet overeenkomt met de voorafgaande cases wordt
+                    // toegevoegd aan de 'encryptedString'.
                     encryptedString.push(stringToEncrypt[i]);
+                    // de uitvoering wordt beëindigd.
                     break;
             }
         }
+        // alle elementen van de array wordt samengevoegd tot een enkele string.
         encryptedString = encryptedString.join("");
-        console.log(encryptedString);
+        // de waarde van 'encryptedString' wordt geretourneerd.
+        return encryptedString;
     }
 }

@@ -1,3 +1,4 @@
+// een herbruikbare object gemaakt waar we de data kunnen ophalen en het vervolgens wordt geretourneerd
 class API{
     async getData(url) {
         let dataToBeReturned = {}
